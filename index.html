@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leap Year Finder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-palette: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #545579;
+        margin: 0;
+      }
+      .container {
+        background: rgb(1, 85, 105);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      input[type="text"] {
+        padding: 8px;
+        width: 200px;
+        margin: 10px 0;
+        border: 1px solid #0b34e9;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #output {
+        display: block;
+        margin-top: 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Leap Year Finder</h1>
+      <input type="text" id="year" placeholder="Enter a year" />
+      <button onclick="leapYears()">Show Leap Years</button>
+      <span id="output"></span>
+    </div>
+    <script>
+      function leapYears() {
+        var input = document.getElementById("year");
+        var year = parseInt(input.value);
+        var output = document.getElementById("output");
+        output.innerHTML = "Next 10 leap years after " + year + ":";
+
+        var count = 0;
+        var nextLeapYears = [];
+
+        while (count < 10) {
+          if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
+            nextLeapYears.push(year);
+            count++;
+          }
+          year++;
+        }
+
+        output.innerHTML += " " + nextLeapYears.join(", ");
+      }
+    </script>
+  </body>
+</html>
